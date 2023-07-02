@@ -1,15 +1,8 @@
-use lumr::errors::Errors;
-use std::env;
+use lumr::graphics::window::GraphicsWindow;
 
 fn main() {
     lumr::logger::init();
-    let res = error_test(1);
-}
-
-fn error_test(num:i32) -> Result<(),Errors> {
-    lumr::logger::info!("Error");
-    if num == 1 {
-        return Err(Errors::TestError.into());
-    }
-    Ok(())
+    
+    let window = GraphicsWindow::new();
+    window.run_event_loop();
 }
