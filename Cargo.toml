@@ -6,6 +6,15 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+vulkano = "0.33.0"
+vulkano-shaders = "0.33.0"
+image = "0.24.0"
 env_logger = "0.10.0"
 log = "0.4.19"
 thiserror = "1.0.40"
+winit = "0.28.3"
+vulkano-win = "0.33.0"
+rand = "0.8.5"
+
+[profile.dev]
+opt-level = 1 

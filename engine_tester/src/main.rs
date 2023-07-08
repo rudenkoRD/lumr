@@ -1,8 +1,8 @@
-use lumr::graphics::window::GraphicsWindow;
+use lumr::core::application::Application;
 
 fn main() {
     lumr::logger::init();
     
-    let window = GraphicsWindow::new();
-    window.run_event_loop();
+    let application = Application::new();
+    application.window.run_event_loop();
 }

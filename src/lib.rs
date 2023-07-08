@@ -1,5 +1,7 @@
 pub mod errors;
 pub mod logger;
+pub mod graphics;
+pub mod core;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
