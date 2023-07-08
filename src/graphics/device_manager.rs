@@ -11,13 +11,13 @@ use vulkano::{
 };
 
 pub struct DeviceManager {
-    physical_device: Arc<PhysicalDevice>,
-    device: Arc<Device>,
-    queue: Arc<Queue>,
+    pub physical_device: Arc<PhysicalDevice>,
+    pub device: Arc<Device>,
+    pub queue: Arc<Queue>,
 }
 
 impl DeviceManager {
-    pub fn new(instance: &Arc<Instance>, surface: &Arc<Surface>) -> DeviceManager {
+    pub fn new(instance: &Arc<Instance>, surface: &Arc<Surface>) -> Arc<DeviceManager> {
         let device_extensions = DeviceExtensions {
             khr_swapchain: true,
             ..DeviceExtensions::empty()
@@ -41,7 +41,7 @@ impl DeviceManager {
     
         let queue = queues.next().unwrap();
 
-        DeviceManager { physical_device, device, queue }
+        Arc::new(DeviceManager { physical_device, device, queue })
     }
 
     fn select_physical_device(

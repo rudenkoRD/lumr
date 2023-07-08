@@ -10,7 +10,7 @@ pub struct VulkanInstanse {
 }
 
 impl VulkanInstanse {
-    pub fn new() -> VulkanInstanse {
+    pub fn new() -> Arc<VulkanInstanse> {
         let library = VulkanLibrary::new().expect("no local Vulkan library/DLL");
         let required_extensions = vulkano_win::required_extensions(&library);
         let instance = Instance::new(
@@ -22,6 +22,6 @@ impl VulkanInstanse {
         )
         .expect("failed to create instance");
 
-        VulkanInstanse { instance }
+        Arc::new(VulkanInstanse { instance })
     }
 }
